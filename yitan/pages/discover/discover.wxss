@@ -1,5 +1,0 @@
-@import "../sub-common.wxss";
-
-.tab-page {
-  padding-bottom: 170rpx;
-}

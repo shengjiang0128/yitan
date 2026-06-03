@@ -1,9 +1,0 @@
-{
-  "navigationStyle":"custom",
-  "navigationBarTitleText": "消息",
-  "navigationBarBackgroundColor": "#ffcc80",
-  "navigationBarTextStyle": "black",
-  "usingComponents": {
-    "tab-bar": "/components/tab-bar/tab-bar"
-  }
-}

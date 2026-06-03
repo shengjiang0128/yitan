@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">编辑资料</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <view class="edit-group">
+    <view class="edit-row edit-row--avatar" bindtap="onEditAvatar">
+      <text class="edit-label">头像</text>
+      <view class="edit-value">
+        <image class="edit-avatar" src="{{profile.avatar}}" mode="aspectFill" />
+        <view class="edit-arrow"></view>
+      </view>
+    </view>
+
+    <view class="edit-row" bindtap="onEditField" data-field="nickname">
+      <text class="edit-label">名字</text>
+      <view class="edit-value">
+        <text class="edit-text">{{profile.nickname}}</text>
+        <view class="edit-arrow"></view>
+      </view>
+    </view>
+
+    <view class="edit-row edit-row--last" bindtap="onEditField" data-field="bio">
+      <text class="edit-label">个性签名</text>
+      <view class="edit-value">
+        <text class="edit-text edit-text--bio">{{profile.bio || '填写个性签名'}}</text>
+        <view class="edit-arrow"></view>
+      </view>
+    </view>
+  </view>
+  <deep-eat-float />
+</view>

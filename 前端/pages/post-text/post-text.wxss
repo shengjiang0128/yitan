@@ -1,0 +1,37 @@
+@import "../post/post-common.wxss";
+
+.page {
+  min-height: 100vh;
+  background: #fffbf2;
+}
+
+.editor-card {
+  margin: 24rpx 32rpx;
+  padding: 32rpx;
+  background: #ffffff;
+  border-radius: 28rpx;
+  box-shadow: 0 6rpx 20rpx rgba(255, 146, 0, 0.1);
+}
+
+.text-editor {
+  width: 100%;
+  min-height: 360rpx;
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 1.7;
+}
+
+.char-count {
+  display: block;
+  margin-top: 24rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: #cc9966;
+}
+
+.tip {
+  padding: 0 40rpx;
+  font-size: 24rpx;
+  color: #bbbbbb;
+  line-height: 1.5;
+}

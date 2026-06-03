@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "附近的小摊",
+  "usingComponents": {
+    "deep-eat-float": "/components/deep-eat-float/deep-eat-float"
+  }
+}

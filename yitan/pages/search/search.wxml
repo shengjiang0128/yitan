@@ -1,6 +1,0 @@
-<view class="sub-page">
-  <input class="search-input" placeholder="你想吃啥" focus bindconfirm="onSearch" />
-  <view class="tag-list">
-    <text class="tag" wx:for="{{tags}}" wx:key="*this" bindtap="onTag" data-kw="{{item}}">{{item}}</text>
-  </view>
-</view>

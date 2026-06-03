@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">写文字</text>
+    <view class="nav-publish" bindtap="onPublish">发布</view>
+  </view>
+
+  <view class="editor-card">
+    <textarea
+      class="text-editor"
+      value="{{content}}"
+      maxlength="{{maxLength}}"
+      placeholder="分享今天吃了什么、心情如何…"
+      auto-height
+      focus
+      bindinput="onInput"
+    />
+    <text class="char-count">{{content.length}}/{{maxLength}}</text>
+  </view>
+
+  <view class="tip">纯文字贴会以文字卡片形式展示在个人主页</view>
+</view>
+<deep-eat-float />

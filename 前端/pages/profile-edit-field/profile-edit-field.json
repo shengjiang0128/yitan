@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "deep-eat-float": "/components/deep-eat-float/deep-eat-float"
+  }
+}

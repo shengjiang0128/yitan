@@ -1,0 +1,95 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">发图文</text>
+    <view class="nav-publish" bindtap="onPublish">发布</view>
+  </view>
+
+  <scroll-view class="form-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="section">
+      <view class="section-label">图片</view>
+      <view class="image-grid">
+        <view class="image-item" wx:for="{{images}}" wx:key="*this">
+          <image class="image-preview" src="{{item}}" mode="aspectFill" />
+          <view class="image-remove" data-index="{{index}}" bindtap="removeImage">×</view>
+        </view>
+        <view class="image-add" wx:if="{{images.length < maxImages}}" bindtap="chooseImages">
+          <text class="image-add-plus">+</text>
+          <text class="image-add-text">添加</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-label">标题</view>
+      <input
+        class="field-input"
+        value="{{title}}"
+        maxlength="{{titleMax}}"
+        placeholder="给帖子起个标题"
+        bindinput="onTitleInput"
+      />
+    </view>
+
+    <view class="section">
+      <view class="section-label">正文</view>
+      <textarea
+        class="field-textarea"
+        value="{{content}}"
+        maxlength="{{contentMax}}"
+        placeholder="写下你的探店体验、味道描述…"
+        auto-height
+        bindinput="onContentInput"
+      />
+      <text class="char-count">{{content.length}}/{{contentMax}}</text>
+    </view>
+
+    <view class="section">
+      <view class="section-label">标签</view>
+      <view class="tag-input-row">
+        <input
+          class="tag-input"
+          value="{{tagInput}}"
+          placeholder="输入标签，如：烧烤"
+          bindinput="onTagInput"
+          confirm-type="done"
+          bindconfirm="addTag"
+        />
+        <view class="tag-add-btn" bindtap="addTag">添加</view>
+      </view>
+      <view class="tag-list" wx:if="{{tags.length}}">
+        <view class="tag-chip" wx:for="{{tags}}" wx:key="*this">
+          <text>#{{item}}</text>
+          <text class="tag-remove" data-index="{{index}}" bindtap="removeTag">×</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section section--row" bindtap="pickLocation">
+      <view class="meta-left">
+        <text class="meta-label">标记地点</text>
+        <text class="meta-value {{location ? '' : 'meta-value--placeholder'}}">{{location || '选择地点'}}</text>
+      </view>
+      <view class="meta-actions">
+        <text class="meta-clear" wx:if="{{location}}" catchtap="clearLocation">清除</text>
+        <view class="meta-arrow"></view>
+      </view>
+    </view>
+
+    <view class="section section--row" bindtap="pickShop">
+      <view class="meta-left">
+        <text class="meta-label">标记店铺</text>
+        <text class="meta-value {{shop ? '' : 'meta-value--placeholder'}}">{{shop || '选择店铺'}}</text>
+      </view>
+      <view class="meta-actions">
+        <text class="meta-clear" wx:if="{{shop}}" catchtap="clearShop">清除</text>
+        <view class="meta-arrow"></view>
+      </view>
+    </view>
+
+    <view class="scroll-bottom"></view>
+  </scroll-view>
+</view>
+<deep-eat-float />

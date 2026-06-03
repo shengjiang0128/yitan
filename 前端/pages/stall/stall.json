@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "deep-eat-float": "/components/deep-eat-float/deep-eat-float"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "摊位详情",
+  "navigationBarBackgroundColor": "#ff9200",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#ffe8cc",
+  "enablePullDownRefresh": false,
+  "backgroundTextStyle": "dark"
+}
