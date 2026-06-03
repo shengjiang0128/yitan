@@ -1,8 +1,0 @@
-<view class="pixel-icon" style="width: {{size}}rpx; height: {{height}}rpx;">
-  <view
-    wx:for="{{pixels}}"
-    wx:key="index"
-    class="pixel"
-    style="left: {{item.x * unit}}rpx; top: {{item.y * unit}}rpx; width: {{unit}}rpx; height: {{unit}}rpx; background-color: {{item.color}};"
-  ></view>
-</view>

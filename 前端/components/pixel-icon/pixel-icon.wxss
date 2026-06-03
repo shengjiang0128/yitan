@@ -1,9 +1,0 @@
-.pixel-icon {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.pixel {
-  position: absolute;
-  box-sizing: border-box;
-}

@@ -1,7 +1,0 @@
-{
-  "navigationStyle": "custom",
-  "usingComponents": {
-    "tab-bar": "/components/tab-bar/tab-bar",
-    "deep-eat-float": "/components/deep-eat-float/deep-eat-float"
-  }
-}
