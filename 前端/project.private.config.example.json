@@ -1,0 +1,8 @@
+{
+  "libVersion": "3.5.8",
+  "projectname": "yitan",
+  "setting": {
+    "compileHotReLoad": false
+  },
+  "description": "复制为 project.private.config.json 使用；私有配置会覆盖 project.config.json"
+}

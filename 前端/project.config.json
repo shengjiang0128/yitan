@@ -12,7 +12,7 @@
     "coverView": true,
     "es6": true,
     "postcss": true,
-    "compileHotReLoad": true,
+    "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
     "preloadBackgroundData": false,
     "minified": true,
@@ -47,7 +47,7 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.3.4",
+  "libVersion": "3.5.8",
   "appid": "wxca5778cc200b5a4a",
   "projectname": "yitan",
   "condition": {
@@ -71,8 +71,5 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "simulatorPluginLibVersion": {
-    "wxext14566970e7e9f62": "2.27.3"
-  },
-  "projectArchitecture": "multiPlatform"
+  "simulatorPluginLibVersion": {}
 }
