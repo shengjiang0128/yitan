@@ -5,7 +5,9 @@
 ## 快速开始
 
 1. 安装 [微信开发者工具](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
-2. 克隆仓库后，**导入本文件夹（`前端`）作为项目目录**
+2. 克隆仓库后，导入项目（二选一）：
+   - **推荐**：导入仓库根目录 `yitan`（已配置 `miniprogramRoot`）
+   - 或直接导入本文件夹 `前端`
 3. AppID：`wxca5778cc200b5a4a`（或使用测试号）
 4. 编译运行即可，默认使用本地 Mock 数据，无需后端
 
