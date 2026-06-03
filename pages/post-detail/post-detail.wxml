@@ -1,0 +1,114 @@
+<view class="page" wx:if="{{post}}">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">帖子详情</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <scroll-view class="content-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="author-card">
+      <image class="author-avatar" src="{{author.avatar}}" mode="aspectFill" />
+      <view class="author-info">
+        <text class="author-name">{{author.nickname}}</text>
+        <text class="author-desc">摊号：{{author.stallId}}</text>
+      </view>
+    </view>
+
+    <swiper
+      wx:if="{{images.length}}"
+      class="image-swiper"
+      indicator-dots="{{images.length > 1}}"
+      circular
+    >
+      <swiper-item wx:for="{{images}}" wx:key="*this">
+        <image class="cover-image" src="{{item}}" mode="aspectFill" />
+      </swiper-item>
+    </swiper>
+
+    <view wx:else class="text-cover">
+      <view class="text-cover-inner">
+        <text class="text-cover-content {{handFontReady ? 'text-cover-content--hand' : ''}}">{{post.content || post.title}}</text>
+      </view>
+    </view>
+
+    <view class="post-body">
+      <text class="post-title">{{post.title}}</text>
+      <text class="post-content" wx:if="{{post.content}}">{{post.content}}</text>
+
+      <view class="tag-list" wx:if="{{post.tags && post.tags.length}}">
+        <text class="tag-item" wx:for="{{post.tags}}" wx:key="*this">#{{item}}</text>
+      </view>
+
+      <view class="post-meta">
+        <text wx:if="{{post.location}}">{{post.location}}</text>
+        <text wx:if="{{post.createdAt}}">{{post.createdAt}}</text>
+      </view>
+
+      <view class="action-row">
+        <view class="action-item" bindtap="onLike">
+          <text class="heart-icon {{liked ? 'heart-icon--active' : ''}}">{{liked ? '♥' : '♡'}}</text>
+          <text class="{{liked ? 'action-text--active' : ''}}">{{likeCount}}</text>
+        </view>
+        <view class="action-item" bindtap="onCollect">
+          <text class="collect-icon {{collected ? 'collect-icon--active' : ''}}">{{collected ? '★' : '☆'}}</text>
+          <text class="{{collected ? 'collect-text--active' : ''}}">{{collectCount}}</text>
+        </view>
+        <view class="action-item" bindtap="onShare">
+          <text class="action-share">↗</text>
+          <text>转发</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="comment-section">
+      <view class="comment-header">
+        <text class="comment-title">评论</text>
+        <text class="comment-count">共 {{commentCount}} 条</text>
+      </view>
+
+      <view wx:if="{{comments.length}}">
+        <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+          <image class="comment-avatar" src="{{item.avatar}}" mode="aspectFill" />
+          <view class="comment-main">
+            <text class="comment-name">{{item.username}}</text>
+            <text class="comment-text">{{item.content}}</text>
+            <view class="comment-foot">
+              <text class="comment-time">{{item.time}}</text>
+              <view
+                class="comment-like"
+                data-id="{{item.id}}"
+                data-index="{{index}}"
+                catchtap="onCommentLike"
+              >
+                <text class="heart-icon heart-icon--sm {{item.liked ? 'heart-icon--active' : ''}}">{{item.liked ? '♥' : '♡'}}</text>
+                <text class="{{item.liked ? 'comment-like-count--active' : ''}}">{{item.likeCount || 0}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="comment-empty" wx:else>
+        <text>还没有评论，来说第一句吧</text>
+      </view>
+    </view>
+
+    <view class="scroll-bottom"></view>
+  </scroll-view>
+
+  <view class="comment-bar">
+    <input
+      class="comment-input"
+      value="{{commentInput}}"
+      placeholder="说点什么..."
+      confirm-type="send"
+      bindinput="onCommentInput"
+      bindconfirm="onSendComment"
+    />
+    <view class="comment-send {{commentInput ? 'comment-send--active' : ''}}" bindtap="onSendComment">发送</view>
+  </view>
+
+  <deep-eat-float />
+</view>

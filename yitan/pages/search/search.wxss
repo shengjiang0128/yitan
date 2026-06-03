@@ -1,0 +1,23 @@
+@import "../sub-common.wxss";
+
+.search-input {
+  background: #ffffff;
+  border-radius: 40rpx;
+  padding: 24rpx 32rpx;
+  font-size: 30rpx;
+  margin-bottom: 32rpx;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.tag {
+  background: #fff5c2;
+  color: #f39800;
+  padding: 12rpx 28rpx;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+}

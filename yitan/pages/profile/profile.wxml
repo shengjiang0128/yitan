@@ -1,0 +1,66 @@
+<view class="page">
+  <!-- 顶部黄色个人信息栏 -->
+  <view class="header" style="padding-top: {{statusBarHeight}}px;">
+    <view class="top-bar">
+      <image src="/images/icons/profilePage/Hey, Eater.png" class="title"></image>
+      <view class="switch-btn">切换为摊主端</view>
+    </view>
+
+    <view class="user-info">
+      <image class="avatar" src="/images/avatar.png" />
+      <view class="info-text">
+        <view class="nickname">脑摊A65235</view>
+        <view class="stall-id">摊号：555555</view>
+      </view>
+    </view>
+
+    <view class="bio">哈哈哈哈哈我爱吃</view>
+
+    <view class="stats">
+      <text>关注：{{userInfo.followCount}}</text>
+      <text>粉丝：{{userInfo.fansCount}}</text>
+    </view>
+  </view>
+
+  <!-- 功能入口区 -->
+  <view class="function-bar">
+    <view class="function-item" bindtap="goToPage" data-type="footprint">
+      <image src="/images/icons/profilePage/位置 1.png" class="function-icon" />
+      <text>足迹</text>
+    </view>
+    <view class="function-item" bindtap="goToPage" data-type="like">
+      <image src="/images/icons/profilePage/喜欢 1.png" class="function-icon" />
+      <text>喜欢</text>
+    </view>
+    <view class="function-item" bindtap="goToPage" data-type="collect">
+      <image src="/images/icons/profilePage/收藏 1.png" class="function-icon" />
+      <text>收藏</text>
+    </view>
+    <view class="function-item" bindtap="goToPage" data-type="review">
+      <image src="/images/icons/profilePage/记录 1.png" class="function-icon" />
+      <text>评价</text>
+    </view>
+    <view class="function-item" bindtap="goToPage" data-type="setting">
+      <image src="/images/icons/profilePage/Align right.png" class="function-icon" />
+      <text>设置</text>
+    </view>
+  </view>
+
+  <!-- 我的帖子区 -->
+  <view class="posts-section">
+    <view class="section-header">
+      <text class="section-title">我的帖子</text>
+      <image class="search-icon" src="/images/icons/profilePage/search.png" />
+    </view>
+
+    <view class="posts-grid">
+      <!-- 循环一次，全部渲染，自动排列 -->
+      <view class="post-item" wx:for="{{posts}}" wx:key="id" bindtap="goToPostDetail" data-item="{{item}}">
+        <image src="{{item.img}}" mode="aspectFill" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部tabbar -->
+  <tab-bar active="index" />
+</view>

@@ -1,0 +1,8 @@
+<view class="sub-page">
+  <text class="sub-title">附近的小摊</text>
+  <text class="sub-desc">按距离为你排序</text>
+  <view class="list-item" wx:for="{{list}}" wx:key="id" bindtap="goStall" data-id="{{item.id}}">
+    <text class="item-name">{{item.name}}</text>
+    <text class="item-meta">{{item.distance}}</text>
+  </view>
+</view>

@@ -1,0 +1,146 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">开张一摊</text>
+    <view class="nav-publish" bindtap="onSubmit">提交</view>
+  </view>
+
+  <scroll-view class="form-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="section">
+      <view class="section-label">小摊名称</view>
+      <input
+        class="field-input"
+        value="{{name}}"
+        placeholder="给你的小摊起个名字"
+        bindinput="onNameInput"
+      />
+    </view>
+
+    <view class="section">
+      <view class="section-label">摊位分类</view>
+      <view class="category-grid">
+        <view
+          class="category-chip {{category === item ? 'category-chip--active' : ''}}"
+          wx:for="{{categories}}"
+          wx:key="*this"
+          data-value="{{item}}"
+          bindtap="pickCategory"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-label">一般出摊位置</view>
+      <view class="location-row" bindtap="pickLocation">
+        <text class="location-value {{address ? '' : 'location-value--placeholder'}}">{{address || '选择常见出摊区域'}}</text>
+        <view class="meta-arrow"></view>
+      </view>
+      <input
+        class="field-input field-input--detail"
+        value="{{addressDetail}}"
+        placeholder="补充具体位置，如：南门左侧第三档"
+        bindinput="onAddressDetailInput"
+      />
+    </view>
+
+    <view class="section">
+      <view class="section-label">古法地图</view>
+      <text class="section-tip">上传区域示意图或手绘地图，点击标注你的出摊位置</text>
+
+      <view wx:if="{{!mapImage}}" class="upload-single" bindtap="chooseMapImage">
+        <text class="upload-plus">+</text>
+        <text class="upload-text">上传地图图片</text>
+      </view>
+
+      <view wx:else class="map-wrap">
+        <view class="map-toolbar">
+          <text class="map-toolbar-text">点击地图标注出摊点</text>
+          <text class="map-toolbar-action" catchtap="removeMapImage">更换图片</text>
+        </view>
+        <view class="map-mark-area" id="mapMarkArea" bindtap="onMapMarkTap">
+          <image class="map-image" src="{{mapImage}}" mode="widthFix" />
+          <view
+            wx:if="{{mapMarker}}"
+            class="map-pin"
+            style="left: {{mapMarker.x}}%; top: {{mapMarker.y}}%;"
+          >
+            <view class="map-pin-dot"></view>
+            <view class="map-pin-label">出摊点</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-label">摊位照片</view>
+      <text class="section-tip">展示摊位外观、招牌或现场环境，至少 1 张</text>
+      <view class="image-grid">
+        <view class="image-item" wx:for="{{stallPhotos}}" wx:key="*this">
+          <image class="image-preview" src="{{item}}" mode="aspectFill" />
+          <view class="image-remove" data-index="{{index}}" catchtap="removeStallPhoto">×</view>
+        </view>
+        <view class="image-add" wx:if="{{stallPhotos.length < maxStallPhotos}}" bindtap="chooseStallPhotos">
+          <text class="image-add-plus">+</text>
+          <text class="image-add-text">添加</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-label">菜单价目表</view>
+      <text class="section-tip">上传手写或打印的菜单、价目表照片</text>
+      <view class="image-grid">
+        <view class="image-item" wx:for="{{menuImages}}" wx:key="*this">
+          <image class="image-preview" src="{{item}}" mode="aspectFill" />
+          <view class="image-remove" data-index="{{index}}" catchtap="removeMenuImage">×</view>
+        </view>
+        <view class="image-add" wx:if="{{menuImages.length < maxMenuImages}}" bindtap="chooseMenuImages">
+          <text class="image-add-plus">+</text>
+          <text class="image-add-text">添加</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-label">摊主身份信息</view>
+      <text class="section-tip">仅用于摊位认领审核，信息本地保存</text>
+
+      <view class="identity-field">
+        <text class="identity-label">姓名</text>
+        <input
+          class="identity-input"
+          value="{{ownerName}}"
+          placeholder="真实姓名"
+          bindinput="onOwnerNameInput"
+        />
+      </view>
+      <view class="identity-field">
+        <text class="identity-label">身份证</text>
+        <input
+          class="identity-input"
+          value="{{ownerIdCard}}"
+          maxlength="18"
+          placeholder="18 位身份证号码"
+          bindinput="onOwnerIdCardInput"
+        />
+      </view>
+      <view class="identity-field">
+        <text class="identity-label">手机号</text>
+        <input
+          class="identity-input"
+          value="{{ownerPhone}}"
+          type="number"
+          maxlength="11"
+          placeholder="11 位手机号"
+          bindinput="onOwnerPhoneInput"
+        />
+      </view>
+    </view>
+
+    <view class="scroll-bottom"></view>
+  </scroll-view>
+
+  <deep-eat-float />
+</view>

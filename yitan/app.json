@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/index/index",
+    "pages/category/category",
+    "pages/rank/rank",
+    "pages/nearby/nearby",
+    "pages/stall/stall",
+    "pages/search/search",
+    "pages/discover/discover",
+    "pages/ai/ai",
+    "pages/notify/notify",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarTitleText": "一摊",
+    "navigationBarBackgroundColor": "#FF9500",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFFBF5",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

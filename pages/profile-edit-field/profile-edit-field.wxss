@@ -1,0 +1,75 @@
+page {
+  background: #fffbf2;
+}
+
+.page {
+  min-height: 100vh;
+  background: #fffbf2;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 32rpx 24rpx;
+  background: linear-gradient(to bottom, #fff2af, #fffbf2);
+}
+
+.nav-back {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-arrow {
+  width: 20rpx;
+  height: 20rpx;
+  border-left: 4rpx solid #ff9a3c;
+  border-bottom: 4rpx solid #ff9a3c;
+  transform: rotate(45deg);
+  margin-left: 8rpx;
+}
+
+.nav-title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333333;
+}
+
+.nav-save {
+  min-width: 64rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #ff9a3c;
+  text-align: right;
+}
+
+.field-panel {
+  margin: 24rpx;
+  padding: 32rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 6rpx 16rpx rgba(255, 146, 0, 0.12);
+}
+
+.field-input,
+.field-textarea {
+  width: 100%;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.field-textarea {
+  min-height: 200rpx;
+}
+
+.field-count {
+  display: block;
+  margin-top: 24rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: #cc9966;
+}

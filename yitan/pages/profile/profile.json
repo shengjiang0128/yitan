@@ -1,0 +1,10 @@
+{
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "我的",
+  "navigationBarBackgroundColor": "#fff6b0",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tab-bar": "/components/tab-bar/tab-bar"
+  }
+}

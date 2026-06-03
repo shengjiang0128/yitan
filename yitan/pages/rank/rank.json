@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "榜单",
+  "navigationStyle": "custom",
+  "navigationBarBackgroundColor": "#ffdd67",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "tab-bar": "/components/tab-bar/tab-bar"
+  }
+}

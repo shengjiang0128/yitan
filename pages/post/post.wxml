@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">发布内容</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <view class="intro">选一种方式，把你的探店发现和好吃瞬间分享出来吧</view>
+
+  <view class="type-list">
+    <view class="type-card" bindtap="goTextPost">
+      <view class="type-icon type-icon--text">文</view>
+      <view class="type-info">
+        <text class="type-title">纯文字贴</text>
+        <text class="type-desc">记录心情、短评、随手想法</text>
+      </view>
+      <view class="type-arrow"></view>
+    </view>
+
+    <view class="type-card" bindtap="goImagePost">
+      <view class="type-icon type-icon--image">图</view>
+      <view class="type-info">
+        <text class="type-title">图文贴</text>
+        <text class="type-desc">选图、写标题文案，加标签和地点店铺</text>
+      </view>
+      <view class="type-arrow"></view>
+    </view>
+  </view>
+</view>
+<deep-eat-float />

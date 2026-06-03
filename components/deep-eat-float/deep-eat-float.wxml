@@ -1,0 +1,13 @@
+<view
+  wx:if="{{!hidden}}"
+  class="float-wrap {{dragging ? 'float-wrap--dragging' : ''}} {{collapsed ? 'float-wrap--collapsed float-wrap--' + collapseSide : ''}}"
+  style="left: {{x}}px; top: {{y}}px;"
+  catchtouchstart="onTouchStart"
+  catchtouchmove="onTouchMove"
+  catchtouchend="onTouchEnd"
+>
+  <view class="float-ball">
+    <text class="float-en">Deep</text>
+    <text class="float-cn">Eat</text>
+  </view>
+</view>

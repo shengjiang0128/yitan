@@ -1,0 +1,5 @@
+<view class="sub-page tab-page">
+  <text class="sub-title">发现</text>
+  <text class="sub-desc">探索更多好吃的小摊</text>
+</view>
+<tab-bar active="discover" />

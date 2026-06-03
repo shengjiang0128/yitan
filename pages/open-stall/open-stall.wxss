@@ -1,0 +1,271 @@
+@import "../post/post-common.wxss";
+
+.page {
+  min-height: 100vh;
+  background: #fffbf2;
+}
+
+.form-scroll {
+  height: calc(100vh - 120rpx);
+  padding: 0 32rpx;
+  box-sizing: border-box;
+}
+
+.scroll-bottom {
+  height: 120rpx;
+}
+
+.section {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 16rpx rgba(255, 146, 0, 0.08);
+}
+
+.section-label {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 12rpx;
+}
+
+.section-tip {
+  display: block;
+  font-size: 24rpx;
+  color: #aaaaaa;
+  line-height: 1.5;
+  margin-bottom: 20rpx;
+}
+
+.field-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  background: #fff8eb;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  color: #333333;
+  box-sizing: border-box;
+}
+
+.field-input--detail {
+  margin-top: 16rpx;
+}
+
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.category-chip {
+  padding: 14rpx 28rpx;
+  border-radius: 999rpx;
+  background: #fff8eb;
+  border: 2rpx solid #ffe0a8;
+  font-size: 26rpx;
+  color: #996633;
+}
+
+.category-chip--active {
+  background: #ff9a3c;
+  border-color: #ff9a3c;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.location-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80rpx;
+  padding: 0 24rpx;
+  background: #fff8eb;
+  border-radius: 20rpx;
+}
+
+.location-value {
+  flex: 1;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.location-value--placeholder {
+  color: #cccccc;
+}
+
+.meta-arrow {
+  width: 14rpx;
+  height: 14rpx;
+  border-top: 3rpx solid #ffc978;
+  border-right: 3rpx solid #ffc978;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.upload-single {
+  height: 220rpx;
+  border-radius: 20rpx;
+  background: #fff8eb;
+  border: 2rpx dashed #ffc978;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-plus {
+  font-size: 52rpx;
+  color: #ff9a3c;
+  line-height: 1;
+}
+
+.upload-text {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #e67e00;
+}
+
+.map-wrap {
+  border-radius: 20rpx;
+  overflow: hidden;
+  background: #fff8eb;
+}
+
+.map-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 20rpx;
+}
+
+.map-toolbar-text {
+  font-size: 24rpx;
+  color: #996633;
+}
+
+.map-toolbar-action {
+  font-size: 24rpx;
+  color: #ff9a3c;
+}
+
+.map-mark-area {
+  position: relative;
+  width: 100%;
+}
+
+.map-image {
+  display: block;
+  width: 100%;
+}
+
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.map-pin-dot {
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: #ff4d4f;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0 4rpx 12rpx rgba(255, 77, 79, 0.45);
+}
+
+.map-pin-label {
+  margin-top: 8rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 77, 79, 0.92);
+  color: #ffffff;
+  font-size: 20rpx;
+  white-space: nowrap;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.image-item,
+.image-add {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.image-remove {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+.image-add {
+  background: #fff8eb;
+  border: 2rpx dashed #ffc978;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-add-plus {
+  font-size: 48rpx;
+  color: #ff9a3c;
+  line-height: 1;
+  font-weight: 300;
+}
+
+.image-add-text {
+  font-size: 24rpx;
+  color: #e67e00;
+  margin-top: 8rpx;
+}
+
+.identity-field {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5efe3;
+}
+
+.identity-field:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.identity-label {
+  width: 120rpx;
+  flex-shrink: 0;
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.identity-input {
+  flex: 1;
+  height: 64rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
