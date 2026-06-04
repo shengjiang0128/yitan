@@ -1,5 +1,7 @@
 const { getStallById } = require("../../utils/category-data");
 const { isFavorite, toggleFavorite } = require("../../utils/stall-favorites");
+const { recordFootprint } = require("../../utils/footprint.js");
+const { getReviewsByStallId } = require("../../utils/stall-reviews.js");
 
 const DEFAULT_STALL = {
   id: 2,
@@ -15,7 +17,8 @@ Page({
   data: {
     statusBarHeight: 88,
     stall: DEFAULT_STALL,
-    favorited: false
+    favorited: false,
+    reviews: []
   },
 
   onLoad(options) {
@@ -35,13 +38,37 @@ Page({
       },
       favorited: isFavorite(id)
     });
+    this.recordView(stall);
+    this.loadReviews(id);
   },
 
   onShow() {
     const { stall } = this.data;
     if (stall && stall.id != null) {
       this.setData({ favorited: isFavorite(stall.id) });
+      this.loadReviews(stall.id);
     }
+  },
+
+  recordView(stall) {
+    if (!stall || stall.id == null) return;
+    recordFootprint({
+      type: "stall",
+      targetId: stall.id,
+      title: stall.name,
+      cover: stall.banner || stall.img || stall.logo || ""
+    });
+  },
+
+  loadReviews(stallId) {
+    const reviews = getReviewsByStallId(stallId).map((item) => ({
+      ...item,
+      displayImg:
+        (item.images && item.images[0]) ||
+        item.stallCover ||
+        "/images/icons/catogoryPage/摊位主图1.png"
+    }));
+    this.setData({ reviews });
   },
 
   onToggleFavorite() {
@@ -87,8 +114,10 @@ Page({
   },
 
   goWriteReview() {
+    const { stall } = this.data;
+    const name = encodeURIComponent(stall.name || "");
     wx.navigateTo({
-      url: "/pages/write-review/write-review?stallId=" + this.data.stall.id
+      url: `/pages/write-review/write-review?stallId=${stall.id}&stallName=${name}`
     });
   }
 });

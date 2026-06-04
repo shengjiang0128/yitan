@@ -102,3 +102,24 @@
 .tab-item.tab-active .tab-icon-img {
   filter: drop-shadow(0 6rpx 10rpx rgba(0, 0, 0, 0.25));
 }
+
+.tab-community-icon {
+  width: 44rpx;
+  height: 44rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.tab-grid-cell {
+  width: 18rpx;
+  height: 18rpx;
+  background: #c8c8c8;
+  border-radius: 6rpx;
+}
+
+.tab-item.tab-active .tab-grid-cell {
+  background: #ff9a3c;
+  box-shadow: 0 4rpx 8rpx rgba(255, 154, 60, 0.35);
+}

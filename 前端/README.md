@@ -34,7 +34,8 @@
 | 首页 | `pages/index/` | 分类、附近小摊 |
 | 摊位 | `pages/stall/`、`pages/category/`、`pages/nearby/` | 摊位列表与详情 |
 | 帖子 | `pages/post-*`、`pages/post-detail/` | 发帖、帖子详情 |
-| 消息 | `pages/notify/` | 通知与私聊 |
+| 社区 | `pages/community/` | 双列瀑布流刷帖（Tab 入口） |
+| 消息 | `pages/notify/` | 通知与私聊（社区左上角信封进入） |
 | 个人 | `pages/profile/` | 个人页、喜欢、收藏 |
 | 摊主 | `pages/open-stall/`、`pages/my-stall/` | 开张、我的一摊 |
 | AI | `pages/ai/` | AI 助手 |

@@ -1,6 +1,10 @@
 <view class="page">
   <view class="header" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
     <text class="page-title">消息</text>
+    <view class="nav-placeholder"></view>
   </view>
 
   <view class="function-bar">
@@ -42,6 +46,5 @@
     </scroll-view>
   </view>
 
-  <tab-bar active="notify" />
   <deep-eat-float />
 </view>

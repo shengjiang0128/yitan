@@ -1,4 +1,5 @@
 const { addPost, createPostId } = require("../../utils/posts.js");
+const { getProfile } = require("../../utils/profile.js");
 
 Page({
   data: {
@@ -27,6 +28,7 @@ Page({
       return;
     }
 
+    const profile = getProfile();
     addPost({
       id: createPostId(),
       postType: "text",
@@ -40,13 +42,14 @@ Page({
       type: "food",
       likeCount: 0,
       collectCount: 0,
-      tags: [],
+      authorNickname: profile.nickname,
+      authorAvatar: profile.avatar,
       createdAt: new Date().toISOString()
     });
 
     wx.showToast({ title: "发布成功", icon: "success" });
     setTimeout(() => {
-      wx.reLaunch({ url: "/pages/profile/profile" });
+      wx.reLaunch({ url: "/pages/community/community" });
     }, 400);
   }
 });

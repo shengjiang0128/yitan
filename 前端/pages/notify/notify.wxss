@@ -13,13 +13,36 @@ page {
 
 .header {
   background: linear-gradient(to bottom, #fff2af, #fffbf2);
-  padding: 20rpx 50rpx 30rpx;
+  padding: 16rpx 28rpx 24rpx;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-back,
+.nav-placeholder {
+  width: 64rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.back-arrow {
+  width: 20rpx;
+  height: 20rpx;
+  border-left: 4rpx solid #ff9a3c;
+  border-bottom: 4rpx solid #ff9a3c;
+  transform: rotate(45deg);
+  margin-left: 8rpx;
 }
 
 .page-title {
-  display: block;
-  font-size: 48rpx;
+  flex: 1;
+  text-align: center;
+  font-size: 36rpx;
   font-weight: 800;
   color: #222222;
 }

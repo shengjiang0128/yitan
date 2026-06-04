@@ -1,0 +1,38 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">我的评价</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <scroll-view class="list-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view wx:if="{{reviews.length}}">
+      <view
+        class="review-card"
+        wx:for="{{reviews}}"
+        wx:key="id"
+        data-id="{{item.stallId}}"
+        bindtap="goStall"
+      >
+        <image class="review-cover" src="{{item.cover}}" mode="aspectFill" />
+        <view class="review-body">
+          <view class="review-head">
+            <text class="stall-name">{{item.stallName}}</text>
+            <text class="review-date">{{item.dateText}}</text>
+          </view>
+          <text class="review-content">{{item.content}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:else>
+      <text class="empty-icon">📝</text>
+      <text class="empty-title">还没有写过评价</text>
+      <text class="empty-desc">进入小摊详情页，点击底部「写评价」即可发布</text>
+    </view>
+  </scroll-view>
+
+  <deep-eat-float />
+</view>

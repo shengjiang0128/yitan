@@ -1,4 +1,5 @@
 const { addPost, createPostId } = require("../../utils/posts.js");
+const { getProfile } = require("../../utils/profile.js");
 
 const MOCK_SHOPS = ["大众炒粉", "泰奶冰沙", "土豆泥拌粉", "东北烤冷面（贝岗小摊店）"];
 const MOCK_LOCATIONS = ["广外南门", "贝岗小吃街", "校内美食广场", "地铁站 B 口"];
@@ -128,6 +129,7 @@ Page({
       return;
     }
 
+    const profile = getProfile();
     addPost({
       id: createPostId(),
       postType: "image",
@@ -141,12 +143,14 @@ Page({
       type: "food",
       likeCount: 0,
       collectCount: 0,
+      authorNickname: profile.nickname,
+      authorAvatar: profile.avatar,
       createdAt: new Date().toISOString()
     });
 
     wx.showToast({ title: "发布成功", icon: "success" });
     setTimeout(() => {
-      wx.reLaunch({ url: "/pages/profile/profile" });
+      wx.reLaunch({ url: "/pages/community/community" });
     }, 400);
   }
 });

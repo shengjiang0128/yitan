@@ -1,0 +1,62 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">足迹</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <view class="tabs">
+    <view
+      class="tab {{activeTab === 'all' ? 'tab--active' : ''}}"
+      data-tab="all"
+      bindtap="onTab"
+    >全部</view>
+    <view
+      class="tab {{activeTab === 'stall' ? 'tab--active' : ''}}"
+      data-tab="stall"
+      bindtap="onTab"
+    >摊位</view>
+    <view
+      class="tab {{activeTab === 'post' ? 'tab--active' : ''}}"
+      data-tab="post"
+      bindtap="onTab"
+    >帖子</view>
+  </view>
+
+  <text class="hint">仅保留近 7 天的浏览记录</text>
+
+  <scroll-view class="list-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view wx:if="{{items.length}}">
+      <view
+        class="fp-item"
+        wx:for="{{items}}"
+        wx:key="viewedAt"
+        data-item="{{item}}"
+        bindtap="onItemTap"
+      >
+        <image
+          class="fp-cover"
+          src="{{item.cover || '/images/icons/indexPage/大众炒粉.png'}}"
+          mode="aspectFill"
+        />
+        <view class="fp-info">
+          <view class="fp-top">
+            <text class="fp-type">{{item.typeLabel}}</text>
+            <text class="fp-time">{{item.timeText}}</text>
+          </view>
+          <text class="fp-title">{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty" wx:else>
+      <text class="empty-icon">👣</text>
+      <text class="empty-title">还没有浏览记录</text>
+      <text class="empty-desc">打开帖子或小摊详情后会出现在这里</text>
+    </view>
+  </scroll-view>
+
+  <deep-eat-float />
+</view>

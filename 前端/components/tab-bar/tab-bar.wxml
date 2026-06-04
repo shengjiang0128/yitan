@@ -16,8 +16,13 @@
       <image class="tab-icon-img" src="/images/icons/tab/Discover.png" mode="aspectFit" />
     </view>
     <view class="tab-post-spacer"></view>
-    <view class="tab-item {{active === 'notify' ? 'tab-active' : ''}}" data-tab="notify" bindtap="onSwitch">
-      <image class="tab-icon-img" src="/images/icons/tab/Bell.png" mode="aspectFit" />
+    <view class="tab-item {{active === 'community' ? 'tab-active' : ''}}" data-tab="community" bindtap="onSwitch">
+      <view class="tab-community-icon">
+        <view class="tab-grid-cell"></view>
+        <view class="tab-grid-cell"></view>
+        <view class="tab-grid-cell"></view>
+        <view class="tab-grid-cell"></view>
+      </view>
     </view>
     <view class="tab-item {{active === 'profile' ? 'tab-active' : ''}}" data-tab="profile" bindtap="onSwitch">
       <image class="tab-icon-img" src="/images/icons/tab/Person.png" mode="aspectFit" />

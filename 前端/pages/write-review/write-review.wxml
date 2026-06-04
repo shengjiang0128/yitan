@@ -1,0 +1,49 @@
+<view class="page">
+  <view class="nav" style="padding-top: {{statusBarHeight}}px;">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-arrow"></view>
+    </view>
+    <text class="nav-title">写评价</text>
+    <view class="nav-placeholder"></view>
+  </view>
+
+  <view class="stall-bar">
+    <text class="stall-label">评价摊位</text>
+    <text class="stall-name">{{stallName}}</text>
+  </view>
+
+  <view class="form-card">
+    <textarea
+      class="content-input"
+      placeholder="说说味道、服务、性价比…"
+      maxlength="500"
+      value="{{content}}"
+      bindinput="onInput"
+      show-confirm-bar="{{false}}"
+    />
+    <text class="char-count">{{content.length}}/500</text>
+  </view>
+
+  <view class="image-section">
+    <text class="section-label">添加图片（选填，最多 3 张）</text>
+    <view class="image-grid">
+      <view
+        class="image-cell"
+        wx:for="{{images}}"
+        wx:key="*this"
+      >
+        <image class="image-preview" src="{{item}}" mode="aspectFill" />
+        <view class="image-remove" data-index="{{index}}" bindtap="onRemoveImage">×</view>
+      </view>
+      <view class="image-add" wx:if="{{images.length < 3}}" bindtap="onChooseImage">
+        <text class="add-plus">+</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="submit-wrap">
+    <button class="submit-btn" bindtap="onSubmit" disabled="{{submitting}}">发布评价</button>
+  </view>
+
+  <deep-eat-float />
+</view>

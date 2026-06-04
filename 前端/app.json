@@ -8,7 +8,7 @@
     "pages/stall/stall",
     "pages/map/map",
     "pages/search/search",
-    "pages/discover/discover",
+    "pages/community/community",
     "pages/ai/ai",
     "pages/notify/notify",
     "pages/notify-category/notify-category",
@@ -26,7 +26,10 @@
     "pages/post-image/post-image",
     "pages/post-detail/post-detail",
     "pages/collect/collect",
-    "pages/like/like"
+    "pages/like/like",
+    "pages/footprint/footprint",
+    "pages/review/review",
+    "pages/write-review/write-review"
   ],
   "window": {
     "navigationBarTitleText": "一摊",

@@ -1,4 +1,5 @@
 const STORAGE_KEY = "yitan_posts";
+const DEFAULT_AVATAR = "/images/icons/notifyPage/portrait.png";
 
 const DEFAULT_POSTS = [
   {
@@ -11,7 +12,10 @@ const DEFAULT_POSTS = [
     collectCount: 45,
     tags: ["炒粉", "广外南门"],
     location: "广外南门",
-    type: "food"
+    type: "food",
+    authorNickname: "干饭王",
+    authorAvatar: DEFAULT_AVATAR,
+    createdAt: "2026-05-28T10:00:00.000Z"
   },
   {
     id: 2,
@@ -23,7 +27,10 @@ const DEFAULT_POSTS = [
     collectCount: 32,
     tags: ["奶茶", "贝岗"],
     location: "贝岗小吃街",
-    type: "food"
+    type: "food",
+    authorNickname: "奶茶星人",
+    authorAvatar: DEFAULT_AVATAR,
+    createdAt: "2026-05-27T14:00:00.000Z"
   },
   {
     id: 3,
@@ -35,7 +42,10 @@ const DEFAULT_POSTS = [
     collectCount: 18,
     tags: ["探店", "小吃街"],
     location: "贝岗小吃街",
-    type: "stall"
+    type: "stall",
+    authorNickname: "探店小能手",
+    authorAvatar: DEFAULT_AVATAR,
+    createdAt: "2026-05-26T09:00:00.000Z"
   },
   {
     id: 4,
@@ -46,7 +56,10 @@ const DEFAULT_POSTS = [
     collectCount: 6,
     tags: ["求推荐", "炸物"],
     location: "",
-    type: "food"
+    type: "food",
+    authorNickname: "选择困难",
+    authorAvatar: DEFAULT_AVATAR,
+    createdAt: "2026-05-25T20:00:00.000Z"
   },
   {
     id: 5,
@@ -58,7 +71,10 @@ const DEFAULT_POSTS = [
     collectCount: 88,
     tags: ["甜品", "绵绵冰"],
     location: "广外南门",
-    type: "food"
+    type: "food",
+    authorNickname: "甜品脑袋",
+    authorAvatar: DEFAULT_AVATAR,
+    createdAt: "2026-05-24T11:30:00.000Z"
   }
 ];
 

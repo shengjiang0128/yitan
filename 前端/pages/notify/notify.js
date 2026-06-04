@@ -6,6 +6,10 @@ Page({
     messageList: getMessageList()
   },
 
+  goBack() {
+    wx.navigateBack();
+  },
+
   onLoad() {
     const sys = wx.getWindowInfo();
     this.setData({ statusBarHeight: sys.statusBarHeight });

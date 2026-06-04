@@ -1,0 +1,126 @@
+@import "../profile-edit/profile-edit.wxss";
+
+.stall-bar {
+  margin: 16rpx 24rpx 0;
+  padding: 24rpx 28rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 6rpx 16rpx rgba(255, 146, 0, 0.1);
+}
+
+.stall-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 8rpx;
+}
+
+.stall-name {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #333333;
+}
+
+.form-card {
+  margin: 20rpx 24rpx 0;
+  padding: 24rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 6rpx 16rpx rgba(255, 146, 0, 0.1);
+}
+
+.content-input {
+  width: 100%;
+  min-height: 240rpx;
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 24rpx;
+  color: #bbbbbb;
+  margin-top: 12rpx;
+}
+
+.image-section {
+  margin: 20rpx 24rpx 0;
+  padding: 24rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  box-shadow: 0 6rpx 16rpx rgba(255, 146, 0, 0.1);
+}
+
+.section-label {
+  display: block;
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 16rpx;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.image-cell,
+.image-add {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 16rpx;
+  position: relative;
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 16rpx;
+}
+
+.image-remove {
+  position: absolute;
+  top: -8rpx;
+  right: -8rpx;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 36rpx;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 28rpx;
+}
+
+.image-add {
+  background: #fff8eb;
+  border: 2rpx dashed #ffc978;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-plus {
+  font-size: 64rpx;
+  color: #ff9a3c;
+  line-height: 1;
+}
+
+.submit-wrap {
+  padding: 40rpx 24rpx 80rpx;
+}
+
+.submit-btn {
+  background: #ff9a3c !important;
+  color: #ffffff !important;
+  border-radius: 48rpx !important;
+  font-size: 32rpx !important;
+  font-weight: 600 !important;
+  border: none !important;
+}
+
+.submit-btn[disabled] {
+  opacity: 0.6;
+}

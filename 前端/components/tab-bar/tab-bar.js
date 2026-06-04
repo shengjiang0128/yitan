@@ -1,8 +1,8 @@
 const TAB_MAP = {
   index: "/pages/index/index",
   rank: "/pages/rank/rank",
+  community: "/pages/community/community",
   ai: "/pages/ai/ai",
-  notify: "/pages/notify/notify",
   profile: "/pages/profile/profile"
 };
 

@@ -1,0 +1,231 @@
+page {
+  height: 100%;
+  background: #f5f5f5;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f5f5f5;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12rpx 24rpx 20rpx;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.header-left,
+.header-right {
+  width: 88rpx;
+  flex-shrink: 0;
+}
+
+.header-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #222222;
+}
+
+.envelope-btn {
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff8eb;
+}
+
+.envelope-btn:active {
+  opacity: 0.85;
+}
+
+.envelope-icon {
+  position: relative;
+  width: 44rpx;
+  height: 30rpx;
+}
+
+/* 合上信封：三角底边 = 袋身顶边（图标最上沿），尖朝下 */
+.envelope-top-flap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 22rpx solid transparent;
+  border-right: 22rpx solid transparent;
+  border-top: 14rpx solid #ff9a3c;
+  z-index: 2;
+}
+
+.envelope-box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 3rpx solid #ff9a3c;
+  border-top: none;
+  border-radius: 0 0 6rpx 6rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+  z-index: 1;
+}
+
+.feed-scroll {
+  flex: 1;
+  height: 0;
+  padding: 16rpx 12rpx 0;
+  box-sizing: border-box;
+}
+
+.waterfall {
+  display: flex;
+  align-items: flex-start;
+  gap: 12rpx;
+}
+
+.waterfall-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.feed-card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+}
+
+.feed-card:active {
+  opacity: 0.92;
+}
+
+.card-cover-wrap {
+  width: 100%;
+  overflow: hidden;
+  background: #f0f0f0;
+  position: relative;
+}
+
+.card-cover {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card-cover--text {
+  height: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: linear-gradient(145deg, #fff3e0, #ffe8a8);
+  display: flex;
+  flex-direction: column;
+}
+
+.text-badge {
+  align-self: flex-start;
+  font-size: 20rpx;
+  color: #e67e00;
+  background: rgba(255, 154, 60, 0.15);
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  margin-bottom: 12rpx;
+}
+
+.text-preview {
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 1.55;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+}
+
+.card-title {
+  padding: 14rpx 14rpx 8rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #333333;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  padding: 0 14rpx 14rpx;
+  gap: 8rpx;
+}
+
+.meta-avatar {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #fff3e0;
+}
+
+.meta-name {
+  flex: 1;
+  font-size: 22rpx;
+  color: #888888;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta-like {
+  display: flex;
+  align-items: center;
+  gap: 4rpx;
+  flex-shrink: 0;
+}
+
+.like-icon {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.like-num {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.feed-empty {
+  padding: 200rpx 48rpx;
+  text-align: center;
+}
+
+.feed-empty-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #666666;
+  margin-bottom: 12rpx;
+}
+
+.feed-empty-desc {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.scroll-bottom {
+  height: 200rpx;
+}

@@ -40,35 +40,24 @@
     <!-- 3. 评价区 -->
     <view class="review-section">
       <text class="section-title">该摊评价</text>
-      <view class="review-list">
-        <view class="review-item">
-          <image class="review-img" src="/images/icons/catogoryPage/摊位主图1.png"></image>
-          <view class="review-text">这凉皮也太好吃了</view>
+      <view class="review-list" wx:if="{{reviews.length}}">
+        <view class="review-item" wx:for="{{reviews}}" wx:key="id">
+          <image class="review-img" src="{{item.displayImg}}" mode="aspectFill"></image>
+          <view class="review-text">{{item.content}}</view>
           <view class="reviewer-infor">
             <view class="infor-left">
-              <image class="reviewer-image" src="/images/icons/stallPage/屏幕截图 2026-05-30 004014.png"></image>
-              <text class="reviewer-name">OO</text>
+              <image class="reviewer-image" src="{{item.authorAvatar}}" mode="aspectFill"></image>
+              <text class="reviewer-name">{{item.authorNickname}}</text>
             </view>
             <view class="infor-right">
               <image class="infor-right-icon" src="/images/icons/stallPage/Heart.png"></image>
-              <text class="thumpsup-count">20</text>
+              <text class="thumpsup-count">{{item.likeCount || 0}}</text>
             </view>
           </view>
         </view>
-        <view class="review-item">
-          <image class="review-img" src="/images/icons/stallPage/绵绵冰.png"></image>
-          <view class="review-text">这绵绵冰也太好吃了</view>
-          <view class="reviewer-infor">
-            <view class="infor-left">
-              <image class="reviewer-image" src="/images/icons/stallPage/屏幕截图 2026-05-30 004014.png"></image>
-              <text class="reviewer-name">OO</text>
-            </view>
-            <view class="infor-right">
-              <image class="infor-right-icon" src="/images/icons/stallPage/Heart.png"></image>
-              <text class="thumpsup-count">20</text>
-            </view>
-          </view>
-        </view>
+      </view>
+      <view class="review-empty" wx:else>
+        <text>还没有评价，点击下方「写评价」抢沙发～</text>
       </view>
     </view>
 

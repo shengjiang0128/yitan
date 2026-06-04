@@ -1,0 +1,94 @@
+@import "../profile-edit/profile-edit.wxss";
+
+.list-scroll {
+  height: calc(100vh - 120rpx);
+  padding: 0 24rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.review-card {
+  display: flex;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 6rpx 20rpx rgba(255, 146, 0, 0.1);
+}
+
+.review-card:active {
+  background: #fff8eb;
+}
+
+.review-cover {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+  background: #f5f5f5;
+}
+
+.review-body {
+  flex: 1;
+  margin-left: 20rpx;
+  min-width: 0;
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+  gap: 12rpx;
+}
+
+.stall-name {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333333;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.review-date {
+  font-size: 22rpx;
+  color: #999999;
+  flex-shrink: 0;
+}
+
+.review-content {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 160rpx 48rpx 0;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #666666;
+  margin-bottom: 12rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #999999;
+  text-align: center;
+  line-height: 1.6;
+}

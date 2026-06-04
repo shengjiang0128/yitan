@@ -1,5 +1,6 @@
 const { getPostById } = require("../../utils/posts.js");
 const { getProfile } = require("../../utils/profile.js");
+const { recordFootprint } = require("../../utils/footprint.js");
 const {
   getComments,
   addComment,
@@ -61,6 +62,13 @@ Page({
       likeCount: postLikeBase + (state.liked ? 1 : 0),
       collectCount: post.collectCount || 0,
       commentCount: comments.length
+    });
+
+    recordFootprint({
+      type: "post",
+      targetId: post.id,
+      title: post.title || post.content || "帖子",
+      cover: images[0] || ""
     });
   },
 

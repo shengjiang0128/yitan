@@ -1,0 +1,97 @@
+<view class="page">
+  <view class="header" style="padding-top: {{statusBarHeight}}px;">
+    <view class="header-left">
+      <view class="envelope-btn" bindtap="goNotify" aria-label="消息">
+        <view class="envelope-icon">
+          <view class="envelope-top-flap"></view>
+          <view class="envelope-box"></view>
+        </view>
+      </view>
+    </view>
+    <text class="header-title">社区</text>
+    <view class="header-right"></view>
+  </view>
+
+  <scroll-view
+    class="feed-scroll"
+    scroll-y
+    enhanced
+    show-scrollbar="{{false}}"
+  >
+    <view class="waterfall" wx:if="{{leftCol.length || rightCol.length}}">
+      <view class="waterfall-col">
+        <view
+          class="feed-card"
+          wx:for="{{leftCol}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="goPostDetail"
+        >
+          <view class="card-cover-wrap" style="height: {{item.coverHeight}}rpx;">
+            <image
+              wx:if="{{item.postType !== 'text'}}"
+              class="card-cover"
+              src="{{item.coverImg}}"
+              mode="aspectFill"
+            />
+            <view wx:else class="card-cover card-cover--text">
+              <text class="text-badge">文字</text>
+              <text class="text-preview">{{item.content || item.displayTitle}}</text>
+            </view>
+          </view>
+          <text class="card-title">{{item.displayTitle}}</text>
+          <view class="card-meta">
+            <image class="meta-avatar" src="{{item.authorAvatar}}" mode="aspectFill" />
+            <text class="meta-name">{{item.authorNickname}}</text>
+            <view class="meta-like">
+              <image class="like-icon" src="/images/icons/stallPage/Heart.png" mode="aspectFit" />
+              <text class="like-num">{{item.likeCount || 0}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="waterfall-col">
+        <view
+          class="feed-card"
+          wx:for="{{rightCol}}"
+          wx:key="id"
+          data-id="{{item.id}}"
+          bindtap="goPostDetail"
+        >
+          <view class="card-cover-wrap" style="height: {{item.coverHeight}}rpx;">
+            <image
+              wx:if="{{item.postType !== 'text'}}"
+              class="card-cover"
+              src="{{item.coverImg}}"
+              mode="aspectFill"
+            />
+            <view wx:else class="card-cover card-cover--text">
+              <text class="text-badge">文字</text>
+              <text class="text-preview">{{item.content || item.displayTitle}}</text>
+            </view>
+          </view>
+          <text class="card-title">{{item.displayTitle}}</text>
+          <view class="card-meta">
+            <image class="meta-avatar" src="{{item.authorAvatar}}" mode="aspectFill" />
+            <text class="meta-name">{{item.authorNickname}}</text>
+            <view class="meta-like">
+              <image class="like-icon" src="/images/icons/stallPage/Heart.png" mode="aspectFit" />
+              <text class="like-num">{{item.likeCount || 0}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="feed-empty" wx:else>
+      <text class="feed-empty-title">还没有帖子</text>
+      <text class="feed-empty-desc">点击底部加号发布第一条吧</text>
+    </view>
+
+    <view class="scroll-bottom"></view>
+  </scroll-view>
+
+  <tab-bar active="community" />
+  <deep-eat-float />
+</view>
