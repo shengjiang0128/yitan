@@ -18,7 +18,10 @@
       >
         <image class="avatar" src="{{item.avatar}}" mode="aspectFill" />
         <view class="item-content">
-          <text class="username">{{item.username}}</text>
+          <view class="title-row">
+            <text class="username">{{item.username}}</text>
+            <text class="action-tag action-tag--{{item.type}}">{{item.type === 'collect' ? '收藏' : '点赞'}}</text>
+          </view>
           <text class="content">{{item.content}}</text>
         </view>
         <text class="time">{{item.time}}</text>

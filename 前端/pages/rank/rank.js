@@ -1,4 +1,4 @@
-const { baseUrl, enabled: apiEnabled } = require("../../config/api.js");
+const { request, isApiOn } = require("../../utils/api-client.js");
 
 Page({
   data: {
@@ -30,23 +30,20 @@ Page({
 
   // 请求后端接口，覆盖死数据
   fetchRankData() {
-    if (!apiEnabled || !baseUrl) return;
+    if (!isApiOn()) return;
 
-    wx.request({
-      url: `${baseUrl}/api/getRankList`,
-      method: "GET",
-      success: (res) => {
-        if (res.data.code === 200) {
+    request({ url: "/api/getRankList", method: "GET", auth: false })
+      .then((res) => {
+        if (res.data && res.data.code === 200 && res.data.data) {
           this.setData({
             rankList: res.data.data.rankList,
             secondList: res.data.data.secondList
-          })
+          });
         }
-      },
-      fail: () => {
-        console.log("接口请求失败，使用本地死数据")
-      }
-    })
+      })
+      .catch(() => {
+        console.log("榜单接口未就绪，使用本地数据");
+      });
   },
 
   // 点击跳转到公用详情页，并把数据传过去

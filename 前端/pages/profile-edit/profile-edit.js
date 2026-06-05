@@ -1,4 +1,5 @@
 const { getProfile, saveProfile } = require("../../utils/profile.js");
+const { request, isApiOn } = require("../../utils/api-client.js");
 
 Page({
   data: {
@@ -31,6 +32,13 @@ Page({
         const tempFilePath = res.tempFiles[0].tempFilePath;
         const profile = saveProfile({ avatar: tempFilePath });
         this.setData({ profile });
+        if (isApiOn()) {
+          request({
+            url: "/api/userInfo",
+            method: "PUT",
+            data: { avatar: tempFilePath }
+          }).catch(() => {});
+        }
         wx.showToast({ title: "头像已更新", icon: "success" });
       }
     });

@@ -1,5 +1,6 @@
 const { addStall, getStalls } = require("../../utils/stalls.js");
 const { getProfile } = require("../../utils/profile.js");
+const { notifyOnMyStallOpened } = require("../../utils/post-notifications.js");
 const {
   STALL_CATEGORIES,
   COMMON_LOCATIONS
@@ -234,7 +235,7 @@ Page({
       .filter(Boolean)
       .join(" · ");
 
-    addStall({
+    const nextStalls = addStall({
       name: this.data.name.trim(),
       stallId,
       status: "审核中",
@@ -254,6 +255,8 @@ Page({
       ownerId: profile.stallId,
       createdAt: new Date().toISOString()
     });
+
+    notifyOnMyStallOpened(nextStalls[0]);
 
     wx.showToast({ title: "提交成功，等待审核", icon: "success" });
     setTimeout(() => {

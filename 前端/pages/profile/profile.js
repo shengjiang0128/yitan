@@ -1,7 +1,7 @@
-const { getProfile } = require("../../utils/profile.js");
+const { getProfile, mergeWithApiData } = require("../../utils/profile.js");
 const { getPosts } = require("../../utils/posts.js");
 const { isCookMode, toggleAppMode } = require("../../utils/app-mode.js");
-const { baseUrl, enabled: apiEnabled } = require("../../config/api.js");
+const { request, isApiOn } = require("../../utils/api-client.js");
 
 Page({
   data: {
@@ -62,18 +62,36 @@ Page({
   },
 
   loadPosts() {
-    this.setData({ posts: getPosts() });
+    if (!isApiOn()) {
+      this.setData({ posts: getPosts() });
+      return;
+    }
+
+    request({ url: "/api/myPosts", method: "GET" })
+      .then((res) => {
+        if (res.data && res.data.code === 200) {
+          const data = res.data.data;
+          const list = Array.isArray(data) ? data : data.list || [];
+          if (list.length) {
+            this.setData({ posts: list });
+            return;
+          }
+        }
+        this.setData({ posts: getPosts() });
+      })
+      .catch(() => {
+        console.log("我的帖子接口失败，使用本地数据");
+        this.setData({ posts: getPosts() });
+      });
   },
 
   fetchUserInfo(localProfile, cookMode) {
-    if (!apiEnabled || !baseUrl) return;
+    if (!isApiOn()) return;
 
-    wx.request({
-      url: `${baseUrl}/api/userInfo`,
-      method: "GET",
-      success: (res) => {
-        if (res.data.code === 200) {
-          const userInfo = { ...localProfile, ...res.data.data };
+    request({ url: "/api/userInfo", method: "GET" })
+      .then((res) => {
+        if (res.data && res.data.code === 200) {
+          const userInfo = mergeWithApiData(res.data.data);
           this.setData({
             userInfo,
             displayNickname: cookMode
@@ -82,11 +100,10 @@ Page({
             displayBio: cookMode ? "哈哈哈哈哈我爱做饭" : userInfo.bio
           });
         }
-      },
-      fail: () => {
+      })
+      .catch(() => {
         console.log("用户信息接口请求失败，使用本地数据");
-      }
-    });
+      });
   },
 
   toggleMode() {

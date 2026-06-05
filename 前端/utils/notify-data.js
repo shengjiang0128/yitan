@@ -1,7 +1,9 @@
+const { getLikeCollectNotifications } = require("./post-notifications.js");
+
 const CATEGORY_META = {
   like: {
     title: "赞和收藏",
-    emptyText: "还没有赞和收藏消息"
+    emptyText: "还没有赞或收藏小摊的消息"
   },
   follow: {
     title: "新增关注",
@@ -26,7 +28,7 @@ const CATEGORY_ITEMS = {
       id: "l2",
       avatar: "/images/icons/notifyPage/portrait.png",
       username: "贝岗吃货",
-      content: "收藏了你的帖子「泰奶冰沙真的绝」",
+      content: "收藏了你的小摊「大众炒粉」",
       time: "周一 12:05"
     }
   ],
@@ -79,6 +81,9 @@ function getCategoryMeta(type) {
 }
 
 function getCategoryItems(type) {
+  if (type === "like") {
+    return getLikeCollectNotifications();
+  }
   return CATEGORY_ITEMS[type] || [];
 }
 

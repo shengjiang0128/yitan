@@ -12,11 +12,29 @@ const DEFAULT_PROFILE = {
   fansCount: 20
 };
 
+function isPlaceholderAvatar(avatar) {
+  if (!avatar) return true;
+  if (avatar === BROKEN_AVATAR) return true;
+  // 后端 Mock 常用占位域名，小程序无法加载
+  if (/example\.com/i.test(avatar)) return true;
+  return false;
+}
+
 function normalizeAvatar(avatar) {
-  if (!avatar || avatar === BROKEN_AVATAR) {
+  if (isPlaceholderAvatar(avatar)) {
     return DEFAULT_AVATAR;
   }
   return avatar;
+}
+
+/** 用户在本机改过头像（相册/拍照临时路径等） */
+function isUserChosenAvatar(avatar) {
+  if (!avatar || isPlaceholderAvatar(avatar)) return false;
+  if (/^wxfile:/i.test(avatar)) return true;
+  if (/^https?:\/\//i.test(avatar) && !/example\.com/i.test(avatar)) {
+    return true;
+  }
+  return avatar !== DEFAULT_AVATAR;
 }
 
 function getProfile() {
@@ -28,12 +46,30 @@ function getProfile() {
 
 function saveProfile(partial) {
   const next = { ...getProfile(), ...partial };
+  if (next.avatar) {
+    next.avatar = normalizeAvatar(next.avatar);
+  }
   wx.setStorageSync(STORAGE_KEY, next);
-  return next;
+  return getProfile();
+}
+
+/** 拉接口后合并：本地已改头像不被后端 Mock 覆盖 */
+function mergeWithApiData(apiData) {
+  const stored = wx.getStorageSync(STORAGE_KEY) || {};
+  const local = { ...DEFAULT_PROFILE, ...stored };
+  const merged = { ...(apiData || {}), ...local };
+  if (isUserChosenAvatar(local.avatar)) {
+    merged.avatar = local.avatar;
+  }
+  merged.avatar = normalizeAvatar(merged.avatar);
+  wx.setStorageSync(STORAGE_KEY, merged);
+  return getProfile();
 }
 
 module.exports = {
   getProfile,
   saveProfile,
-  DEFAULT_PROFILE
+  mergeWithApiData,
+  isUserChosenAvatar,
+  DEFAULT_AVATAR
 };

@@ -1,3 +1,5 @@
+const { isApiOn, loginWithCode } = require("../../utils/api-client.js");
+
 Page({
   data: {
     statusBarHeight: 20,
@@ -46,23 +48,57 @@ Page({
 
   doLogin(userInfo) {
     if (this._jumping) return;
+    this.clearLoginTimer();
     this.setData({ loading: true });
-
     wx.setStorageSync("yitan_user", userInfo);
+
+    // 兜底：最多等 12 秒一定进首页，避免一直转圈
+    this._loginTimer = setTimeout(() => {
+      if (!this._jumping) {
+        wx.showToast({ title: "登录超时，先进入应用", icon: "none" });
+        this.goHome();
+      }
+    }, 12000);
 
     wx.login({
       success: (res) => {
-        const app = getApp();
-        if (res.code && wx.cloud && app.globalData.cloudReady) {
-          this.callCloudLogin(res.code, userInfo);
-        } else {
-          this.goHome();
+        if (res.code && isApiOn()) {
+          this.callRestLogin(res.code, userInfo);
+          return;
         }
+        this.goHome();
       },
       fail: () => {
         this.goHome();
       }
     });
+  },
+
+  clearLoginTimer() {
+    if (this._loginTimer) {
+      clearTimeout(this._loginTimer);
+      this._loginTimer = null;
+    }
+  },
+
+  callRestLogin(code, userInfo) {
+    loginWithCode(code, 10000)
+      .then((data) => {
+        wx.setStorageSync("yitan_user", {
+          ...userInfo,
+          openid: data.openid || ""
+        });
+        this.goHome();
+      })
+      .catch((err) => {
+        console.warn("REST 登录失败，直接进入本地模式", err);
+        wx.showToast({
+          title: "后端较慢，已进入本地模式",
+          icon: "none",
+          duration: 2000
+        });
+        this.goHome();
+      });
   },
 
   callCloudLogin(code, userInfo) {
@@ -83,7 +119,7 @@ Page({
         finish({ openid: result.openid || "" });
       })
       .catch((err) => {
-        console.warn("云函数 login 调用失败，请确认已部署 cloudfunctions/login", err);
+        console.warn("云函数 login 调用失败", err);
         finish({});
       });
   },
@@ -91,6 +127,7 @@ Page({
   goHome() {
     if (this._jumping) return;
     this._jumping = true;
+    this.clearLoginTimer();
     this.setData({ loading: false });
 
     wx.reLaunch({
@@ -108,7 +145,7 @@ Page({
             this._jumping = false;
             wx.showModal({
               title: "跳转失败",
-              content: "找不到首页，请确认项目里有 pages/index 文件夹（含 index.wxml 等 4 个文件）",
+              content: "找不到首页，请确认项目里有 pages/index 文件夹",
               showCancel: false
             });
           }

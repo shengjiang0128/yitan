@@ -55,17 +55,24 @@
 
 ## 后端联调
 
-1. 阅读 `docs/API-对接清单.md`
-2. 修改 `config/api.js`：
+1. 在仓库根目录启动后端：
 
-```javascript
-module.exports = {
-  baseUrl: "https://your-api.example.com",
-  enabled: true
-};
+```bash
+cd yitan-backend
+npm install
+npm start
 ```
 
-3. 按文档逐步实现接口，前端会优先请求 API，失败时回退本地 Mock
+2. 前端 `config/api.js` 已默认指向 `http://127.0.0.1:3000` 且 `enabled: true`  
+   真机调试请改成电脑局域网 IP。
+
+3. 微信开发者工具 → **详情 → 本地设置** → 勾选 **不校验合法域名**
+
+4. 登录流程：`wx.login` → `POST /api/auth/login` → 自动存 token，后续请求带 `Authorization: Bearer ...`
+
+5. 统一请求封装见 `utils/api-client.js`；失败时多数页面会回退本地 Mock
+
+详细接口见 `docs/API-对接清单.md`
 
 ## 注意事项
 

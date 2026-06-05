@@ -1,4 +1,5 @@
 const { saveProfile } = require("../../utils/profile.js");
+const { request, isApiOn } = require("../../utils/api-client.js");
 
 const FIELD_CONFIG = {
   nickname: {
@@ -62,7 +63,26 @@ Page({
     }
 
     saveProfile({ [field]: trimmed });
-    wx.showToast({ title: "已保存", icon: "success" });
-    setTimeout(() => wx.navigateBack(), 300);
+
+    const done = () => {
+      wx.showToast({ title: "已保存", icon: "success" });
+      setTimeout(() => wx.navigateBack(), 300);
+    };
+
+    if (!isApiOn()) {
+      done();
+      return;
+    }
+
+    request({
+      url: "/api/userInfo",
+      method: "PUT",
+      data: { [field]: trimmed }
+    })
+      .then(done)
+      .catch(() => {
+        wx.showToast({ title: "已保存本地，同步失败", icon: "none" });
+        setTimeout(() => wx.navigateBack(), 300);
+      });
   }
 });

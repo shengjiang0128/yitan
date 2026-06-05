@@ -1,5 +1,7 @@
 const { addPost, createPostId } = require("../../utils/posts.js");
+const { request, isApiOn } = require("../../utils/api-client.js");
 const { getProfile } = require("../../utils/profile.js");
+const { notifyOnMyPostPublished } = require("../../utils/post-notifications.js");
 
 const MOCK_SHOPS = ["大众炒粉", "泰奶冰沙", "土豆泥拌粉", "东北烤冷面（贝岗小摊店）"];
 const MOCK_LOCATIONS = ["广外南门", "贝岗小吃街", "校内美食广场", "地铁站 B 口"];
@@ -130,27 +132,52 @@ Page({
     }
 
     const profile = getProfile();
-    addPost({
-      id: createPostId(),
+    const payload = {
       postType: "image",
       title: trimmedTitle,
       content: trimmedContent,
       images,
-      img: images[0],
       tags,
       location,
-      shop,
-      type: "food",
-      likeCount: 0,
-      collectCount: 0,
-      authorNickname: profile.nickname,
-      authorAvatar: profile.avatar,
-      createdAt: new Date().toISOString()
-    });
+      shop
+    };
 
-    wx.showToast({ title: "发布成功", icon: "success" });
-    setTimeout(() => {
-      wx.reLaunch({ url: "/pages/community/community" });
-    }, 400);
+    const saveLocal = (id) => {
+      const post = {
+        id: id || createPostId(),
+        ...payload,
+        img: images[0],
+        type: "food",
+        likeCount: 0,
+        collectCount: 0,
+        authorNickname: profile.nickname,
+        authorAvatar: profile.avatar,
+        createdAt: new Date().toISOString()
+      };
+      addPost(post);
+      notifyOnMyPostPublished(post);
+      wx.showToast({ title: "发布成功", icon: "success" });
+      setTimeout(() => {
+        wx.reLaunch({ url: "/pages/community/community" });
+      }, 400);
+    };
+
+    if (!isApiOn()) {
+      saveLocal();
+      return;
+    }
+
+    request({ url: "/api/posts", method: "POST", data: payload })
+      .then((res) => {
+        const id =
+          res.data && res.data.code === 200 && res.data.data
+            ? res.data.data.id
+            : createPostId();
+        saveLocal(id);
+      })
+      .catch(() => {
+        wx.showToast({ title: "接口失败，已存本地", icon: "none" });
+        saveLocal();
+      });
   }
 });
